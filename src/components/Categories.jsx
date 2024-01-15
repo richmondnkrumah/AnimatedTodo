@@ -1,6 +1,7 @@
 // src/components/Categories.jsx
 import React, { useState } from 'react';
 import useStore from '../store';
+import Tags from './Tags';
 
 const Categories = () => {
   const categories = useStore((state) => state.categories);
@@ -10,9 +11,11 @@ const Categories = () => {
   const [newCategoryName, setNewCategoryName] = useState('');
 
   const handleAddCategory = () => {
-    addCategory(newCategoryName);
-    setNewCategoryName('');
-    setIsAddingCategory(false);
+    if (newCategoryName.trim()) {
+      addCategory(newCategoryName);
+      setNewCategoryName('');
+      setIsAddingCategory(false);
+    }
   };
 
   return (
@@ -37,6 +40,8 @@ const Categories = () => {
       ) : (
         <button onClick={() => setIsAddingCategory(true)}>Add Category</button>
       )}
+
+      <Tags />
     </div>
   );
 };
