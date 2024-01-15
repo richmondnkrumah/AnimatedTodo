@@ -10,9 +10,12 @@ const App = () => {
   const [newTodoTitle, setNewTodoTitle] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [newTags, setNewTags] = useState('');
-  
+  const [sortCompleted, setSortCompleted] = useState(false);
+
   const todos = useStore((state) =>
-    state.todos.filter((todo) => todo.title.includes(searchTerm) && (!searchTerm || todo.title.includes(searchTerm)))
+    state.todos
+      .filter((todo) => todo.title.includes(searchTerm) && (!searchTerm || todo.title.includes(searchTerm)))
+      .filter((todo) => (sortCompleted ? todo.completed : true))
   );
   const addTodo = useStore((state) => state.addTodo);
   const deleteTodo = useStore((state) => state.deleteTodo);
@@ -32,6 +35,7 @@ const App = () => {
   const handleDeleteTodo = (id) => deleteTodo(id);
   const handleToggleTodo = (id) => toggleTodo(id);
   const handleSearch = (e) => setSearchTerm(e.target.value);
+  const handleSortCompleted = () => setSortCompleted(!sortCompleted);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
@@ -65,6 +69,12 @@ const App = () => {
           <input type="text" value={newTags} onChange={(e) => setNewTags(e.target.value)} />
         </label>
         <button onClick={handleAddTodo}>Add Todo</button>
+      </div>
+      <div>
+        <label>
+          Sort Completed
+          <input type="checkbox" checked={sortCompleted} onChange={handleSortCompleted} />
+        </label>
       </div>
       <TodoList todos={todos} categories={categories} onDelete={handleDeleteTodo} onToggle={handleToggleTodo} />
     </div>
