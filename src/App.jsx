@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React, { useState } from 'react';
+import useStore from './store';
+import TodoList from './components/TodoList';
+import Categories from './components/Categories';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [newTodoTitle, setNewTodoTitle] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [newTags, setNewTags] = useState('');
+  
+  const todos = useStore((state) =>
+    state.todos.filter((todo) => todo.title.includes(searchTerm) && (!searchTerm || todo.title.includes(searchTerm)))
+  );
+  const addTodo = useStore((state) => state.addTodo);
+  const deleteTodo = useStore((state) => state.deleteTodo);
+  const toggleTodo = useStore((state) => state.toggleTodo);
+
+  const categories = useStore((state) => state.categories);
+
+  const handleAddTodo = () => {
+    if (newTodoTitle.trim()) {
+      addTodo(newTodoTitle, selectedCategory, newTags.split(',').map((tag) => tag.trim()));
+      setNewTodoTitle('');
+      setSelectedCategory('');
+      setNewTags('');
+    }
+  };
+
+  const handleDeleteTodo = (id) => deleteTodo(id);
+  const handleToggleTodo = (id) => toggleTodo(id);
+  const handleSearch = (e) => setSearchTerm(e.target.value);
+
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
   return (
-    <>
+    <div className={darkMode ? 'dark' : ''}>
+      <label>
+        Dark Mode
+        <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />
+      </label>
+      <input type="text" placeholder="Search todos..." value={searchTerm} onChange={handleSearch} />
+      <Categories />
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h2>Add Todo</h2>
+        <label>
+          Title:
+          <input type="text" value={newTodoTitle} onChange={(e) => setNewTodoTitle(e.target.value)} />
+        </label>
+        <label>
+          Category:
+          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            <option value="">Select Category</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Tags:
+          <input type="text" value={newTags} onChange={(e) => setNewTags(e.target.value)} />
+        </label>
+        <button onClick={handleAddTodo}>Add Todo</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <TodoList todos={todos} categories={categories} onDelete={handleDeleteTodo} onToggle={handleToggleTodo} />
+    </div>
+  );
+};
 
-export default App
+export default App;
