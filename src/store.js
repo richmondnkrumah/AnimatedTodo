@@ -1,7 +1,7 @@
 // src/store.js
 import {create} from 'zustand';
 
-const useStore = create((set) => {
+const useStore = create((set,get) => {
   const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
   const storedCategories = JSON.parse(localStorage.getItem('categories')) || [];
   const storedTags = JSON.parse(localStorage.getItem('tags')) || [];
@@ -28,6 +28,15 @@ const useStore = create((set) => {
         localStorage.setItem('todos', JSON.stringify(newTodos));
         return { todos: newTodos };
       }),
+      getRecentTodos: () => {
+        const currentTodos = get().todos
+          const limit = currentTodos.length > 10 ? 10: currentTodos.length
+          const recentTodos = []
+          for (let index = 0; index < limit; index++) {
+            recentTodos.push(currentTodos[index])
+          }
+          return recentTodos
+      },
     addCategory: (name) =>
       set((state) => {
         const newCategories = [...state.categories, { id: Date.now(), name }];
