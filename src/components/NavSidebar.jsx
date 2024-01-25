@@ -6,6 +6,7 @@ import {
     DarkModeIcon,
     LightModeIcon,
     AnalyticsIcon,
+    SettingIcon,
 } from "../assets/icons";
 
 const NavSidebar = ({handleSectionChange}) => {
@@ -27,18 +28,22 @@ const NavSidebar = ({handleSectionChange}) => {
                     </div>
                     <div
                         onClick={() => handleSectionChange("Dashboard")}
-                        className="flex items-center cursor-pointer"
+                        className="flex gap-2 items-center cursor-pointer"
                     >
                         <svg className="w-8 h-8">{DashboardIcon}</svg>
                         <p className="hidden sm:block">Dashboard</p>
                     </div>
-                    <div onClick={() => handleSectionChange('Tasks')} className="flex items-center cursor-pointer">
+                    <div onClick={() => handleSectionChange('Tasks')} className="flex items-center gap-2 cursor-pointer">
                         <svg className="w-8 h-8">{TasksIcon}</svg>
                         <p className="hidden sm:block">Tasks</p>
                     </div>
-                    <div onClick={() => handleSectionChange('Analytics')} className="flex items-center cursor-pointer">
+                    <div onClick={() => handleSectionChange('Analytics')} className="flex gap-2 items-center cursor-pointer">
                         <svg className="w-8 h-8">{AnalyticsIcon}</svg>
-                        <p className="hidden sm:block">Analtics</p>
+                        <p className="hidden sm:block">Analytics</p>
+                    </div>
+                    <div onClick={() => handleSectionChange('Settings')} className="flex items-center gap-2 cursor-pointer">
+                        <svg className="w-8 h-8">{SettingIcon}</svg>
+                        <p className="hidden sm:block">Settings</p>
                     </div>
                 </div>
                 <div
