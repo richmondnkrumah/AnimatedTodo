@@ -3,16 +3,28 @@ import {create} from 'zustand';
 
 const useStore = create((set,get) => {
   const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-  const storedCategories = JSON.parse(localStorage.getItem('categories')) || [];
-  const storedTags = JSON.parse(localStorage.getItem('tags')) || [];
+
+  const storedTags = JSON.parse(localStorage.getItem('tags')) || [
+    {
+      id:Date.now(),
+      name:"wow"
+    },
+    {
+      id:Date.now(),
+      name:'Hi'
+    },
+    {
+      id:Date.now(),
+      name:'See'
+    }
+  ];
 
   return {
     todos: storedTodos,
-    categories: storedCategories,
     tags: storedTags,
-    addTodo: (title, categoryId, tags) =>
+    addTodo: (title, Priority, tags) =>
       set((state) => {
-        const newTodos = [...state.todos, { id: Date.now(), title, completed: false, categoryId, tags }];
+        const newTodos = [...state.todos, { id: Date.now(), title, completed: false, Priority, tags }];
         localStorage.setItem('todos', JSON.stringify(newTodos));
         return { todos: newTodos };
       }),
@@ -37,12 +49,7 @@ const useStore = create((set,get) => {
           }
           return recentTodos
       },
-    addCategory: (name) =>
-      set((state) => {
-        const newCategories = [...state.categories, { id: Date.now(), name }];
-        localStorage.setItem('categories', JSON.stringify(newCategories));
-        return { categories: newCategories };
-      }),
+    
     addTag: (name) =>
       set((state) => {
         const newTags = [...state.tags, { id: Date.now(), name }];
