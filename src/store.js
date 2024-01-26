@@ -1,20 +1,22 @@
 // src/store.js
 import {create} from 'zustand';
+import { v4 as uniqueID } from "uuid";
+
 
 const useStore = create((set,get) => {
   const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
   const storedTags = JSON.parse(localStorage.getItem('tags')) || [
     {
-      id:Date.now(),
+      id:uniqueID(),
       name:"wow"
     },
     {
-      id:Date.now(),
+      id:uniqueID(),
       name:'Hi'
     },
     {
-      id:Date.now(),
+      id:uniqueID(),
       name:'See'
     }
   ];
@@ -24,7 +26,7 @@ const useStore = create((set,get) => {
     tags: storedTags,
     addTodo: (title, Priority, tags) =>
       set((state) => {
-        const newTodos = [...state.todos, { id: Date.now(), title, completed: false, Priority, tags }];
+        const newTodos = [...state.todos, { id:uniqueID(), title, completed: false, Priority, tags }];
         localStorage.setItem('todos', JSON.stringify(newTodos));
         return { todos: newTodos };
       }),
@@ -44,8 +46,8 @@ const useStore = create((set,get) => {
         const currentTodos = get().todos
           const limit = currentTodos.length > 10 ? 10: currentTodos.length
           const recentTodos = []
-          for (let index = 0; index < limit; index++) {
-            recentTodos.push(currentTodos[index])
+          for(let index = currentTodos.length; index > (currentTodos.length - limit); index--) {
+            recentTodos.push(currentTodos[index-1])
           }
           return recentTodos
       },
