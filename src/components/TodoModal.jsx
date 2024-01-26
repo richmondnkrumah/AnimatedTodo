@@ -4,7 +4,7 @@ import { TickIcon } from "../assets/icons";
 
 
 
-const TodoModal = ({ isOpen }) => {
+const TodoModal = ({ isOpen,handleCloseModal }) => {
   const dialogRef = useRef(null);
   const tags = useStore((state) => state.tags)
   
@@ -24,14 +24,15 @@ const TodoModal = ({ isOpen }) => {
       setNewTodoTitle("");
       setSelectedPriority("");
       setNewTags([]);
-      dialogRef.current.close()
+      // dialogRef.current.close()
+      handleCloseModal()
     }
 
   };
-  console.log(tags)
-  console.log(newTags,"this is a newTags")
+  
+
   const handleOutsideCloseClick = (e) => {
-    console.log("I am in")
+
     const dialogDimensions = dialogRef.current.getBoundingClientRect()
   if (
     e.clientX < dialogDimensions.left ||
@@ -39,13 +40,12 @@ const TodoModal = ({ isOpen }) => {
     e.clientY < dialogDimensions.top ||
     e.clientY > dialogDimensions.bottom
   ) {
-    dialogRef.current.close()
+    // dialogRef.current.close()
+    handleCloseModal()
   }
   }
   
-  console.log(newTags,"THis is a new Tag")
   useEffect(() => {
-    console.log("Why");
     if (isOpen) {
       dialogRef.current.showModal();
     }
@@ -55,7 +55,7 @@ const TodoModal = ({ isOpen }) => {
   },[isOpen]);
 
   return (
-    <dialog onClick={handleOutsideCloseClick} className="backdrop:bg-black/60 backdrop:backdrop-blur-sm absolute top-0 right-0 bottom-0 left-0 m-auto rounded-3xl px-3 py-5" ref={dialogRef}>
+    <dialog onClick={handleOutsideCloseClick} className="backdrop:bg-black/60 backdrop:backdrop-blur-sm absolute top-0 right-0 bottom-0 left-0 m-auto rounded-3xl px-3 py-5 overflow-hidden" ref={dialogRef}>
       <div className=" w-[320px] sm:w-[500px] flex flex-col gap-4 rounded-lg">
         <h2 className="text-center font-bold text-lg">Add New Task</h2>
         <div className="flex flex-col relative before:content-[''] before:h-[2px] before:w-full before:bg-green-500 before:absolute before:bottom-0 ">

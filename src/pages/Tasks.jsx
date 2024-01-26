@@ -13,6 +13,7 @@ const Tasks = () => {
 
   
   const toggleTodo = useStore((state) => state.toggleTodo);
+  const deleteTodo = useStore((state) => state.deleteTodo);
 
   const todos = useStore((state) =>
     state.todos
@@ -57,10 +58,10 @@ const Tasks = () => {
         onDelete={handleDeleteTodo}
         onToggle={handleToggleTodo}
       />
-      <div onClick={() => setIsOpen(state => !state)} className="absolute right-10 cursor-pointer bottom-10 w-10 h-10 bg-purple-800 text-center text-white text-3xl rounded-lg">
+      <div onClick={() => setIsOpen(true)} className="absolute right-5 cursor-pointer bottom-5 w-10 h-10 bg-purple-800 text-center text-white text-3xl rounded-lg">
         +
       </div>
-      <TodoModal isOpen={isOpen} handleOpenModal={() => setIsOpen(false)}/>
+      <TodoModal isOpen={isOpen} handleCloseModal={() => setIsOpen(false)}/>
     </div> 
   );
 };
