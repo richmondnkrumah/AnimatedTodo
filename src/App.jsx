@@ -18,7 +18,7 @@ const App = () => {
     return (
         <div className="w-[100dvw] h-[100dvh]">
             <NavSidebar handleSectionChange={handleSectionChange} />
-            <div className="ml-[60px] sm:ml-[205px]">
+            <div className="ml-[60px] sm:ml-[205px] px-2">
             {
                 currentSection === "Dashboard" && <Dashboard />
             }
