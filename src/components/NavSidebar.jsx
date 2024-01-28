@@ -21,7 +21,7 @@ const NavSidebar = ({handleSectionChange}) => {
 
     return (
         <motion.nav className="fixed top-0 h-full w-[50px] sm:w-[200px] dark:bg-purple-500 bg-amber-300">
-            <div className="flex flex-col pl-3 h-full w-full">
+            <div className="flex content-center flex-wrap sm:flex-nowrap flex-col sm:pl-4 pt-5 h-full w-full relative">
                 <div className="flex flex-col gap-3 ">
                     <div>
                         <h2 className=" text-[1em] sm:text-[2em]">Task</h2>
@@ -47,7 +47,7 @@ const NavSidebar = ({handleSectionChange}) => {
                     </div>
                 </div>
                 <div
-                    className="cursor-pointer  absolute bottom-3"
+                    className="cursor-pointer  absolute bottom-5 -translate-x-[50%] left-[50%] sm:translate-x-0 sm:left-4"
                     onClick={() => setDarkMode((currentMode) => !currentMode)}
                 >
                     <svg className="w-8 h-8">
