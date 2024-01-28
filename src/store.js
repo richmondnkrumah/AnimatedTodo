@@ -26,7 +26,7 @@ const useStore = create((set,get) => {
     tags: storedTags,
     addTodo: (title, Priority, tags) =>
       set((state) => {
-        const newTodos = [...state.todos, { id:uniqueID(), title, completed: false, Priority, tags }];
+        const newTodos = [...state.todos, { id:uniqueID(), title, completed: false, Priority, tags,date: Date.now() }];
         localStorage.setItem('todos', JSON.stringify(newTodos));
         return { todos: newTodos };
       }),
