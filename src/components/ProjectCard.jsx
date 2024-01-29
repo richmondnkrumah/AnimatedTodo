@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjectCard = () => {
   return (
-    <div className="w-full flex flex-col gap-3  rounded-3xl h-72 bg-amber-500 p-4">
+    <div className="w-full flex flex-col gap-3  rounded-3xl h-72 bg-amber-300 p-4">
       <div className="flex justify-between content-center">
         <p>Jan,1 2020</p>
         <div className="flex flex-col gap-1">
