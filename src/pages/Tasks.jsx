@@ -12,7 +12,7 @@ const Tasks = () => {
   const handleSearch = (e) => setSearchTerm(e.target.value);
   const [sortCompleted, setSortCompleted] = useState(false);
 
-  const [currTask,setCurrTask] = useState({})
+  const [currTask,setCurrTask] = useState(null)
 
   const toggleTodo = useStore((state) => state.toggleTodo);
   const deleteTodo = useStore((state) => state.deleteTodo);
@@ -26,11 +26,15 @@ const Tasks = () => {
       )
       .filter((todo) => (sortCompleted ? todo.completed : true))
   );
-  const handleSortCompleted = () => setSortCompleted(!sortCompleted);
+  const handleCurrentTaskDetails = (todo) => {
+    
+    setCurrTask(todo)
+
+  }
 
   const handleDeleteTodo = (id) => deleteTodo(id);
   const handleToggleTodo = (id) => toggleTodo(id);
-
+  console.log(todos)
   return (
     <div className="flex h-full gap-5">
       <div className="grow flex flex-col gap-5">
@@ -72,11 +76,12 @@ const Tasks = () => {
           todos={todos}
           onDelete={handleDeleteTodo}
           onToggle={handleToggleTodo}
+          onCurrentTask={handleCurrentTaskDetails}
         />
       </div>
-      <div className=" w-[350px] h-full bg-amber-500">
-        <TaskDetails task={currTask}/>
-      </div>
+      {/* <div className=" w-[350px] h-full bg-amber-500">
+        <TaskDetails currTask={currTask}/>
+      </div> */}
       <TodoModal isOpen={isOpen} handleCloseModal={() => setIsOpen(false)} />
     </div>
   );
