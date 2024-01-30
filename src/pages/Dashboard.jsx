@@ -18,15 +18,15 @@ const Dashboard = () => {
   const todos = useStore((state) => state.todos);
 
   return (
-    <div className="flex sm:flex-row flex-col gap-3 sm:gap-5 h-full">
+    <div className="flex sm:flex-row flex-col  gap-3 justify-between h-full">
       <div className="flex flex-col gap-5">
         <div>
           <h2 className=" text-[1em] sm:text-[2em]">Overview</h2>
         </div>
-        <div className="flex flex-col gap-1  sm:flex-row sm:gap-4">
+        <div className="flex flex-col gap-1  sm:flex-row sm:gap-5">
           <div className="flex flex-col gap-1 sm:gap-3">
             <p>Projects</p>
-            <div className="flex justify-between sm:gap-4">
+            <div className="flex justify-between sm:gap-5">
 
           <div className="bg-amber-300 rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col  justify-between  ">
             <svg className="w-9 h-9 mb-9 rotate-90">{WriteSqaureIcon}</svg>
@@ -46,7 +46,7 @@ const Dashboard = () => {
           </div>
           <div className="flex flex-col gap-1 sm:gap-3">
             <p>Tasks</p>
-            <div className="flex justify-between sm:gap-4"> 
+            <div className="flex justify-between sm:gap-5"> 
 
           <div className="bg-amber-300 rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col justify-between ">
           <svg className="w-9 h-9 mb-9">{PenSquareIcon}</svg>
@@ -93,8 +93,7 @@ const Dashboard = () => {
           {/* <Categories /> */}
         </div>
       </div>
-      <div className="flex-col w-full gap-2  sm:pt-16 sm:gap-3 flex">
-        {/* <Calendar /> */}
+      <div className="flex-col w-fit gap-2    sm:pt-16 sm:gap-3 flex">
         <div>
           <h2 className="">Recent Projects</h2>
         </div>
