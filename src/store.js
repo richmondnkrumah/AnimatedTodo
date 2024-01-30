@@ -5,7 +5,40 @@ import { v4 as uniqueID } from "uuid";
 
 const useStore = create((set,get) => {
   const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-
+  const storedProjects = JSON.parse(localStorage.getItem('projects')) || [
+    {
+      id:uniqueID(),
+      title:"mobile",
+      subTitle:"cffffgfffgfg",
+      tasks: [],
+      endDate: Date.now(),
+      creationDate: Date.now()
+    },
+    {
+      id:uniqueID(),
+      title:"mobile",
+      subTitle:"cffffgfffgfg",
+      tasks: [],
+      endDate: Date.now(),
+      creationDate: Date.now()
+    },
+    {
+      id:uniqueID(),
+      title:"mobile",
+      subTitle:"cffffgfffgfg",
+      tasks: [],
+      endDate: Date.now(),
+      creationDate: Date.now()
+    },
+    {
+      id:uniqueID(),
+      title:"mobile",
+      subTitle:"cffffgfffgfg",
+      tasks: [],
+      endDate: Date.now(),
+      creationDate: Date.now()
+    },
+  ];
   const storedTags = JSON.parse(localStorage.getItem('tags')) || [
     {
       id:uniqueID(),
@@ -24,6 +57,7 @@ const useStore = create((set,get) => {
   return {
     todos: storedTodos,
     tags: storedTags,
+    projects: storedProjects,
     addTodo: (title, Priority, tags) =>
       set((state) => {
         const newTodos = [...state.todos, { id:uniqueID(), title, completed: false, Priority, tags,date: Date.now() }];
@@ -35,6 +69,18 @@ const useStore = create((set,get) => {
         const newTodos = state.todos.filter((todo) => todo.id !== id);
         localStorage.setItem('todos', JSON.stringify(newTodos));
         return { todos: newTodos };
+      }),
+      addProject: (title,subTitle, tasks, endDate) =>
+      set((state) => {
+        const newProjects = [...state.todos, { id:uniqueID(), creationDate: Date.now(), title,subTitle, completed: false,tasks,endDate }];
+        localStorage.setItem('projects', JSON.stringify(newProjects));
+        return { todos: newProjects };
+      }),
+    deleteProject: (id) =>
+      set((state) => {
+        const newProjects = state.todos.filter((todo) => todo.id !== id);
+        localStorage.setItem('projects', JSON.stringify(newProjects));
+        return { todos: newProjects };
       }),
     toggleTodo: (id) =>
       set((state) => {
