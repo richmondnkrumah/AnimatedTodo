@@ -1,11 +1,20 @@
-import Todo from './Todo';
+import Todo from "./Todo";
 
-const TodoList = ({ todos , onDelete, onToggle }) => {
+const TodoList = ({ todos, onDelete, onToggle, onCurrentTask }) => {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className="flex flex-col gap-4">
+      <div className="flex relative justify-between before:h-[1px] before:w-full before:bg-gray-500 before:absolute before:-bottom-2">
+        <p className="ml-6">Title</p>
+        <div className="flex gap-8 ">
+          <p className="text-center w-[80px]">Status</p>
+          <p className="w-[84px]  text-center">Priority</p>
+          <p className=" w-16">Remove</p>
+        </div>
+      </div>
       {todos.map((todo) => (
-        <Todo key={todo.id}  todo={todo} onDelete={onDelete} onToggle={onToggle} />
+        <Todo key={todo.id} onCurrentTask={onCurrentTask}  todo={todo} onDelete={onDelete} onToggle={onToggle} />
       ))}
+      
     </div>
   );
 };
