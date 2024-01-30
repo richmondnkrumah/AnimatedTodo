@@ -37,14 +37,15 @@ const NavSidebar = ({handleSectionChange}) => {
                         <svg className="w-8 h-8">{TasksIcon}</svg>
                         <p className="hidden sm:block">Tasks</p>
                     </div>
+                    <div onClick={() => handleSectionChange('Projects')} className="flex items-center gap-2 cursor-pointer">
+                        <svg className="w-8 h-8">{SettingIcon}</svg>
+                        <p className="hidden sm:block">Projects</p>
+                    </div>
                     <div onClick={() => handleSectionChange('Analytics')} className="flex gap-2 items-center cursor-pointer">
                         <svg className="w-8 h-8">{AnalyticsIcon}</svg>
                         <p className="hidden sm:block">Analytics</p>
                     </div>
-                    <div onClick={() => handleSectionChange('Settings')} className="flex items-center gap-2 cursor-pointer">
-                        <svg className="w-8 h-8">{SettingIcon}</svg>
-                        <p className="hidden sm:block">Settings</p>
-                    </div>
+                    
                 </div>
                 <div
                     className="cursor-pointer  absolute bottom-5 -translate-x-[50%] left-[50%] sm:translate-x-0 sm:left-4"
