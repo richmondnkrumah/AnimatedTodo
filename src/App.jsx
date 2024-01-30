@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import Tasks from "./pages/Tasks";
 import Analytics from "./pages/Analytics";
-import Settings from './pages/Settings'
+import Projects from './pages/Projects'
 
 import NavSidebar from "./components/NavSidebar";
 import './App.css'
@@ -25,12 +25,13 @@ const App = () => {
             {
                 currentSection === "Tasks" && <Tasks />
             }
+               {
+                currentSection === "Projects" && <Projects />
+            }
             {
                 currentSection === "Analytics" && <Analytics />
             }
-            {
-                currentSection === "Settings" && <Settings />
-            }
+         
             </div>
         </div>
     );
