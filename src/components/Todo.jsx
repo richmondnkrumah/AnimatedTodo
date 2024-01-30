@@ -1,18 +1,18 @@
 // src/components/Todo.jsx
 import React from "react";
+import { DeleteIcon } from "../assets/icons";
 
-const Todo = ({ todo, onDelete, onToggle }) => {
+const Todo = ({ todo, onDelete, onToggle,onCurrentTask }) => {
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-3">
-
       <input
         className=" scale-125 checked:accent-amber-500 "
         type="checkbox"
         checked={todo.completed}
         onChange={() => onToggle(todo.id)}
       />
-      <span>{todo.title}</span>
+      <span className="cursor-pointer hover:underline" onClick={() => onCurrentTask(todo)}>{todo.title}</span>
         
       </div>
       {/* {todo.tags && (
@@ -20,20 +20,28 @@ const Todo = ({ todo, onDelete, onToggle }) => {
           Tags: {todo.tags.map((tag) => `#${tag.name} `)}
         </span>
       )} */}
-      <div className="flex gap-5">
+      <div className="flex gap-8">
+        <div>
+          <p>{todo.completed ? "Completed" : "In Progress"}</p>
+        </div>
         {todo.Priority === "High" ? (
-          <span className="cursor-pointer w-[85px] text-center block h-fit px-4 py-1 rounded-3xl bg-red-500">
+          <span className=" w-[80px] text-center block h-fit px-1 py-[2px] rounded-3xl bg-red-500">
             High
           </span>
         ) : todo.Priority === "Normal" ? (
-          <span className="cursor-pointer w-[85px] text-center block h-fit px-4 py-1 bg-orange-500 rounded-3xl ">
+          <span className=" w-[80px] text-center block h-fit px-1 py-[2px] bg-orange-500 rounded-3xl ">
             Normal
           </span>
         ) : (
-          <span className="cursor-pointer w-[85px] text-center block h-fit px-4 py-1 bg-purple-500 rounded-3xl ">
+          <span className=" w-[80px] text-center block h-fit px-1 py-[2px] bg-purple-500 rounded-3xl ">
             Low
           </span>
         )}
+        <div  className=" w-16 flex items-center justify-center">
+        <svg  onClick={() => onDelete(todo.id)} className=" cursor-pointer w-5 h-5 ">
+          {DeleteIcon}
+        </svg>
+        </div>
 
         
       </div>
