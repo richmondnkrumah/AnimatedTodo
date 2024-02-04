@@ -1,11 +1,11 @@
 import React from 'react'
 import ProjectCard from '../components/ProjectCard'
 
-const ProjectList = ({projects,onDelete}) => {
+const ProjectList = ({projects,onDelete, onCurrentProject}) => {
   return (
-    <div className='grid gap-5 grid-cols-[repeat(3,minmax(300px,320px))] '>
+    <div className='grid gap-5 grid-cols-[repeat(auto-fill,minmax(300px,310px))] '>
       {projects.map((project) => (
-        <ProjectCard key={project.id}  project={project} onDelete={onDelete}  />
+        <ProjectCard key={project.id}  project={project} onCurrentProject={onCurrentProject} onDelete={onDelete}  />
       ))}
     </div>
   )
