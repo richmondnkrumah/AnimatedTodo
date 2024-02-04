@@ -20,7 +20,7 @@ const NavSidebar = ({handleSectionChange}) => {
     }
 
     return (
-        <motion.nav className="fixed top-0 h-full w-[50px] sm:w-[200px] dark:bg-purple-500 bg-amber-300">
+        <motion.nav className="fixed top-0 bg-[#171717] h-full w-[50px] sm:w-[220px] dark:bg-purple-500 text-white">
             <div className="flex content-center flex-wrap sm:flex-nowrap flex-col sm:pl-4 pt-5 h-full w-full relative">
                 <div className="flex flex-col gap-5 ">
                     <div>
