@@ -36,7 +36,7 @@ const Tasks = () => {
   const handleToggleTodo = (id) => toggleTodo(id);
   console.log(todos)
   return (
-    <div className="flex h-full gap-5">
+    <div className="flex h-full text-white gap-5">
       <div className="grow flex flex-col gap-5">
         <div className="flex items-center justify-between ">
           <h1 className=" text-[1em] sm:text-[2em]">All Tasks</h1>
@@ -54,7 +54,7 @@ const Tasks = () => {
             </div>
             <div
               onClick={() => setIsOpen(true)}
-              className=" cursor-pointer bottom-5 w-10 h-10 bg-purple-800 text-center text-white text-3xl rounded-full"
+              className=" cursor-pointer bottom-5 w-10 h-10 bg-[#e60b09] text-center text-white text-3xl rounded-full"
             >
               +
             </div>
