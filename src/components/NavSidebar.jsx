@@ -9,7 +9,7 @@ import {
     SettingIcon,
 } from "../assets/icons";
 
-const NavSidebar = ({handleSectionChange}) => {
+const NavSidebar = ({handleSectionChange,currentSection}) => {
     const [darkMode, setDarkMode] = useState(false);
     
     if (darkMode) {
@@ -28,20 +28,20 @@ const NavSidebar = ({handleSectionChange}) => {
                     </div>
                     <div
                         onClick={() => handleSectionChange("Dashboard")}
-                        className="flex gap-2 items-center cursor-pointer"
+                        className={` ${currentSection === "Dashboard" ? "text-white" : "text-[#495057]"} flex gap-2 items-center cursor-pointer`}
                     >
                         <svg className="w-8 h-8">{DashboardIcon}</svg>
                         <p className="hidden sm:block">Dashboard</p>
                     </div>
-                    <div onClick={() => handleSectionChange('Tasks')} className="flex items-center gap-2 cursor-pointer">
+                    <div onClick={() => handleSectionChange('Tasks')} className={` ${currentSection === "Tasks" ? "text-white" : "text-[#495057]"} flex gap-2 items-center cursor-pointer`}>
                         <svg className="w-8 h-8">{TasksIcon}</svg>
                         <p className="hidden sm:block">Tasks</p>
                     </div>
-                    <div onClick={() => handleSectionChange('Projects')} className="flex items-center gap-2 cursor-pointer">
+                    <div onClick={() => handleSectionChange('Projects')} className={` ${currentSection === "Projects" ? "text-white" : "text-[#495057]"} flex gap-2 items-center cursor-pointer`}>
                         <svg className="w-8 h-8">{SettingIcon}</svg>
                         <p className="hidden sm:block">Projects</p>
                     </div>
-                    <div onClick={() => handleSectionChange('Analytics')} className="flex gap-2 items-center cursor-pointer">
+                    <div onClick={() => handleSectionChange('Analytics')} className={` ${currentSection === "Analytics" ? "text-white" : "text-[#495057]"} flex gap-2 items-center cursor-pointer`}>
                         <svg className="w-8 h-8">{AnalyticsIcon}</svg>
                         <p className="hidden sm:block">Analytics</p>
                     </div>
