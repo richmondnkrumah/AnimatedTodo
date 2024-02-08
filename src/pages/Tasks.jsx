@@ -47,7 +47,7 @@ const Tasks = () => {
               placeholder="Search tasks"
               value={searchTerm}
               onChange={handleSearch}
-              className=" w-80 outline-none  border rounded-full indent-7 h-10 pr-4"
+              className="w-80 outline-none bg-[#212121]   border-[#212121] rounded-full indent-8 h-10 pr-4"
             />
             <div>
               <svg className="w-8 h-8 rotate-90">{FilterIcon}</svg>

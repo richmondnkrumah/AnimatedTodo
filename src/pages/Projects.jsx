@@ -26,7 +26,7 @@ const Projects = () => {
     setCurrProject(projectID);
   };
   return (
-    <div className="flex h-full ">
+    <div className="flex h-full text-white ">
       <div className=" grow flex flex-col gap-5 mr-[280px] pr-5">
         <div className="flex items-center justify-between ">
           <h1 className=" text-[1em] sm:text-[2em]">Projects</h1>
@@ -37,7 +37,7 @@ const Projects = () => {
               placeholder="Search tasks"
               value={searchTerm}
               onChange={handleSearch}
-              className=" w-80 outline-none  border rounded-full indent-7 h-10 pr-4"
+              className=" bg-[#212121]  border-[#212121] w-80 outline-none  border rounded-full indent-8  h-10 pr-4"
             />
             <div
               onClick={() => setIsOpen(true)}
