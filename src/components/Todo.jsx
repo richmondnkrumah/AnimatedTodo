@@ -1,8 +1,10 @@
 // src/components/Todo.jsx
 import React from "react";
 import { DeleteIcon } from "../assets/icons";
+import useStore from "../store";
 
 const Todo = ({ todo, onDelete, onToggle,isProjectDetail }) => {
+  const theme = useStore(state => state.theme)
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-3 ">
@@ -46,7 +48,7 @@ const Todo = ({ todo, onDelete, onToggle,isProjectDetail }) => {
         
         <div  className={`w-16 flex items-center ${!isProjectDetail ? "justify-center": "justify-end"} `}>
         <svg  onClick={() => onDelete(todo.id)} className=" cursor-pointer w-5 h-5 ">
-          {DeleteIcon}
+          {DeleteIcon(theme)}
         </svg>
         </div>
       </div>
