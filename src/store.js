@@ -33,6 +33,10 @@ const useStore = create((set, get) => {
   ];
 
   return {
+    theme: 'light',
+    changeTheme: (theme) => set({
+      theme: theme
+    }) ,
     todos: storedTodos,
     tags: storedTags,
     projects: storedProjects,
