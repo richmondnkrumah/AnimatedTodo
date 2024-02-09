@@ -31,7 +31,7 @@ const Dashboard = () => {
             <div className="flex justify-between sm:gap-5">
               <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col  justify-between ">
                 <div className=" BOX1 w-11 h-11 rounded-xl relative">
-                  <svg className="w-9 h-9 mb-9  rotate-90 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">
+                  <svg className="w-9 h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">
                     {WriteSqaureIcon}
                   </svg>
                 </div>
