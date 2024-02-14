@@ -27,7 +27,7 @@ const ProjectDetails = ({ currProject,handleDeleteProject }) => {
     <div className=" relative p-3 flex flex-col gap-5  h-full">
       {currProject ? (
         <div>
-          {currProject.tasks.every(task => task.completed) ? (
+          {currProject.completed ? (
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-green-400"></span>
               <p className=" text-xs ">Completed</p>
@@ -79,7 +79,7 @@ const ProjectDetails = ({ currProject,handleDeleteProject }) => {
               />
             ))}
           </div>
-          <div onClick={() => handleDeleteProject(currProject.id)} className="px-4 text-center py-2 bottom-3 bg-[#e60b09] text-white rounded-3xl w-full">
+          <div onClick={() => handleDeleteProject(currProject.id)} className="px-4 cursor-pointer text-center py-2 bottom-3 bg-[#e60b09] text-white rounded-3xl w-full">
             <p>Delete Project</p>
           </div>
         </div>
