@@ -5,18 +5,6 @@ import { v4 as uniqueID } from "uuid";
 const useStore = create((set, get) => {
   const storedTodos = JSON.parse(localStorage.getItem("todos")) || [];
   const storedProjects = JSON.parse(localStorage.getItem("projects")) || [];
-  //  [
-  //   {
-  //     id: uniqueID(),
-  //     title: "mobile",
-  //     subTitle: "cffffgfffgfg",
-  //     tasks: storedTodos,
-  //     endDate: Date.now(),
-  //     creationDate: Date.now(),
-  //     completed: false,
-  //   },
-
-  // ];
   const storedTags = JSON.parse(localStorage.getItem("tags")) || [
     {
       id: uniqueID(),
@@ -79,11 +67,9 @@ const useStore = create((set, get) => {
         localStorage.setItem("projects", JSON.stringify(newProjects));
         return { projects: newProjects };
       }),
-    deleteProject: (id) =>
+      deleteProject: (id) =>
       set((state) => {
-        const newProjects = state.projects.filter(
-          (project) => project.id !== id
-        );
+        const newProjects = state.projects.filter((project) => project.id !== id);
         localStorage.setItem("projects", JSON.stringify(newProjects));
         return { projects: newProjects };
       }),
@@ -121,7 +107,11 @@ const useStore = create((set, get) => {
             newProjects = state.projects;
             break;
         }
-        return { projects: newProjects };
+        console.log(newProjects,"projects format")
+        const modifiedProjects = newProjects.map(project => ({...project,completed: project.tasks.every(task => task.completed)}))
+        localStorage.setItem("projects", JSON.stringify(modifiedProjects));
+
+        return { projects: modifiedProjects };
       });
     },
     toggleTodo: (id) =>
