@@ -13,10 +13,14 @@ return formattedDate;
 
 
 const ProjectCard = ({project,onDelete,onCurrentProject}) => {
-  const progressBarWidth = (division,multiplier) => {
-    return `w-[${100/division * multiplier}%]`
+  const progressBarWidth = () => {
+    const numerator = 100 *  project?.tasks.filter(task => task.completed).length
+    const denominator = project.tasks.length
+    const result = numerator/denominator
+    return  result
   }
-  const stylee = `w-[${100/project?.tasks.length * project?.tasks.filter(task => task.completed).length}%]`
+  const stylee = `[${project?.tasks.length/project?.tasks.filter(task => task.completed).length * 100} %]`
+  console.log(progressBarWidth(),"width")
   return (
     <div onClick={() => onCurrentProject(project.id)} className=" cursor-pointer flex flex-col gap-3 w-[310px] rounded-3xl h-72 bg-[#171717] BOXEE p-4 text-white">
       <div className="flex justify-between content-center items-center">
@@ -38,11 +42,11 @@ const ProjectCard = ({project,onDelete,onCurrentProject}) => {
             <p>{project?.tasks.filter(task => task.completed).length}/{project?.tasks.length} tasks</p>
           </div>
           <div className="w-full rounded-full h-2 bg-[#212121]">
-            <span className={`block rounded-full ${stylee} h-full bg-[#e60b09]`}></span>
+            <span style={{width: `${progressBarWidth()}%` }} className={`block rounded-full h-full bg-[#e60b09]`}></span>
           </div>
         </div>
       </div>
-      <div className="self-end px-3 py-1 bg-[#212121]  rounded-full ">
+      <div  className="self-end px-3 py-1 bg-[#212121]  rounded-full ">
         <p>3 days left</p>
       </div>
     </div>
