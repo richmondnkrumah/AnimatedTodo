@@ -29,26 +29,26 @@ const Dashboard = () => {
           <div className="flex flex-col gap-1 sm:gap-3">
             <p>Projects</p>
             <div className="flex justify-between sm:gap-5">
-              <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col  justify-between ">
-                <div className=" BOX1 w-11 h-11 rounded-xl relative">
-                  <svg className="w-9 h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">
+              <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-36 sm:h-[220px] flex p-5 sm:p-6 flex-col  justify-between ">
+                <div className=" BOX1 w-7 h-7 sm:w-11 sm:h-11 rounded-md sm:rounded-xl relative">
+                  <svg className="w-5 h-5 sm:w-9 sm:h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">
                     {WriteSqaureIcon}
                   </svg>
                 </div>
-                <p className="text-3xl ml-1">{projects.length}</p>
-                <h2 className=" text-[12px]">
+                <p className="text-xl sm:text-3xl ml-[2px]">{projects.length}</p>
+                <h2 className=" text-[10px] sm:text-[16px]">
                   Project<br></br>Total
                 </h2>
               </div>
-              <div className="bg-[#171717]  rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col justify-between">
-              <div className="bg-red-500 BOX4 w-11 h-11 rounded-xl relative">
+              <div className="bg-[#171717]  rounded-xl w-[140px] sm:w-[220px] h-36 sm:h-[220px] flex p-5 sm:p-6 flex-col justify-between">
+              <div className="bg-red-500 BOX4 w-7 h-7 sm:w-11 sm:h-11 rounded-md sm:rounded-xl relative">
 
-                <svg className="w-9 h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">{TickSquareIcon}</svg>
+                <svg className="w-5 h-5 sm:w-9 sm:h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">{TickSquareIcon}</svg>
 </div>
-                <p className="text-3xl ml-1">
+                <p className="text-xl sm:text-3xl ml-[2px]">
                   {projects.filter((project) => project.completed).length}
                 </p>
-                <h2 className="text-[12px]">
+                <h2 className="text-[10px] sm:text-[16px]">
                   Project<br></br>Completed
                 </h2>
               </div>
@@ -57,26 +57,26 @@ const Dashboard = () => {
           <div className="flex flex-col gap-1 sm:gap-3">
             <p>Tasks</p>
             <div className="flex justify-between sm:gap-5">
-              <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col justify-between ">
-              <div className=" BOX3 w-11 h-11 rounded-xl relative">
+              <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-36 sm:h-[220px] flex p-5 sm:p-6 flex-col justify-between ">
+              <div className=" BOX3 w-7 h-7 sm:w-11 sm:h-11 rounded-md sm:rounded-xl relative">
                 
-                <svg className="w-9 h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] 
+                <svg className="w-5 h-5 sm:w-9 sm:h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] 
                 left-[50%]">{PenSquareIcon}</svg>
                 </div>
-                <p className="text-3xl ml-1">{todos.length}</p>
-                <h2 className=" text-[12px]">
+                <p className="text-xl sm:text-3xl ml-[2px]">{todos.length}</p>
+                <h2 className="text-[10px] sm:text-[16px]">
                   Tasks<br></br>Total
                 </h2>
               </div>
-              <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-32 sm:h-[220px] flex p-6 flex-col justify-between">
-              <div className=" BOX4 w-11 h-11 rounded-xl relative">
+              <div className="bg-[#171717] rounded-xl w-[140px] sm:w-[220px] h-36 sm:h-[220px] flex p-5 sm:p-6 flex-col justify-between">
+              <div className=" BOX4 w-7 h-7 sm:w-11 sm:h-11 rounded-md sm:rounded-xl relative">
                 
-                <svg className="w-9 h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">{TickSquareIcon}</svg>
+                <svg className="w-5 h-5 sm:w-9 sm:h-9 mb-9 absolute top-[50%] -translate-y-[50%] -translate-x-[50%] left-[50%]">{TickSquareIcon}</svg>
                 </div>
-                <p className="text-3xl ml-1">
+                <p className="text-xl sm:text-3xl ml-[2px]">
                   {todos.filter((todo) => todo.completed).length}
                 </p>
-                <h2 className="text-[12px]">
+                <h2 className="text-[10px] sm:text-[16px]">
                   Tasks<br></br>Completed
                 </h2>
               </div>
@@ -109,11 +109,11 @@ const Dashboard = () => {
           {/* <Categories /> */}
         </div>
       </div>
-      <div className="flex-col w-fit gap-2  text-white sm:pt-16 sm:gap-3 flex">
+      <div className="flex-col w-full gap-2  text-white sm:pt-16 sm:gap-3 flex">
         <div>
           <h2 className="">Recent Projects</h2>
         </div>
-        <div className="flex grow gap-5 flex-col justify-between">
+        <div className="flex items-center  gap-5 flex-col justify-between">
           {getRecentProjects().map((project) => (
             <ProjectCard project={project} />
           ))}

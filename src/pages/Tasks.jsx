@@ -34,43 +34,32 @@ const Tasks = () => {
 
   const handleDeleteTodo = (id) => deleteTodo(id);
   const handleToggleTodo = (id) => toggleTodo(id);
-  console.log(todos)
   return (
     <div className="flex h-full text-white gap-5">
       <div className="grow flex flex-col gap-5">
-        <div className="flex items-center justify-between ">
-          <h1 className=" text-[1em] sm:text-[2em]">All Tasks</h1>
-          <div className="flex items-center relative gap-3">
+        <div className="flex flex-col gap-5 sm:gap-0 sm:flex-row sm:items-center justify-between ">
+          <h1 className=" self-center sm:self-auto text-[1em] sm:text-[2em]">All Tasks</h1>
+          <div className="flex items-center relative justify-between gap-3">
             <svg className="w-5 h-5 absolute left-1.5">{SearchIcon}</svg>
             <input
               type="text"
               placeholder="Search tasks"
               value={searchTerm}
               onChange={handleSearch}
-              className="w-80 outline-none bg-[#212121]   border-[#212121] rounded-full indent-8 h-10 pr-4"
+              className="sm:w-80   outline-none bg-[#212121]   border-[#212121] rounded-full indent-8 h-10 pr-4"
             />
             <div>
-              <svg className="w-8 h-8 rotate-90">{FilterIcon}</svg>
+              <svg className="w-7 h-7 bg-amber-500 rotate-90">{FilterIcon}</svg>
             </div>
             <div
               onClick={() => setIsOpen(true)}
-              className=" cursor-pointer bottom-5 w-10 h-10 bg-[#e60b09] text-center text-white text-3xl rounded-full"
+              className=" cursor-pointer w-9 h-9 sm:w-10 sm:h-10 bg-[#e60b09]
+               text-center text-white  rounded-full text-2xl sm:text-3xl "
             >
-              +
+              <span>+</span>
             </div>
           </div>
         </div>
-        {/* 
-      <div>
-        <label>
-          Sort Completed
-          <input
-            type="checkbox"
-            checked={sortCompleted}
-            onChange={handleSortCompleted}
-          />
-        </label>
-      </div> */}
 
         <TodoList
           todos={todos}

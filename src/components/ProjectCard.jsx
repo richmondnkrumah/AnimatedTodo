@@ -19,10 +19,9 @@ const ProjectCard = ({project,onDelete,onCurrentProject}) => {
     const result = numerator/denominator
     return  result
   }
-  const stylee = `[${project?.tasks.length/project?.tasks.filter(task => task.completed).length * 100} %]`
-  console.log(progressBarWidth(),"width")
+  
   return (
-    <div onClick={() => onCurrentProject(project.id)} className=" cursor-pointer flex flex-col gap-3 w-[310px] rounded-3xl h-72 bg-[#171717] BOXEE p-4 text-white">
+    <div onClick={() => onCurrentProject(project.id)} className=" cursor-pointer flex flex-col gap-3 min-w-[260px] w-[320px] rounded-2xl sm:rounded-3xl h-64 sm:h-72 bg-[#171717] BOXEE p-4 text-white">
       <div className="flex justify-between content-center items-center">
         <p>{project ? getFormatedDate(project.creationDate) : "Jan,1 2020"}</p>
         <div className="flex flex-col gap-1">

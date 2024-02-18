@@ -15,7 +15,7 @@ const App = () => {
     
 
     return (
-        <div className="w-[100dvw] h-[100dvh]">
+        <div className="w-[100dvw] min-h-[100dvh]  max-h-fit bg-[#121212]">
             <NavSidebar handleSectionChange={handleSectionChange} currentSection={currentSection} />
             <div className="ml-[60px] bg-[#121212] py-5 h-full sm:ml-[220px] sm:px-5 mr-[10px] sm:mr-0">
             {
