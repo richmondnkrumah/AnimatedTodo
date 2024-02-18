@@ -119,7 +119,6 @@ const useStore = create((set, get) => {
         const newTodos = state.todos.map((todo) =>
           todo.id === id ? { ...todo, completed: !todo.completed } : todo
         );
-        console.log(newTodos);
         localStorage.setItem("todos", JSON.stringify(newTodos));
 
         return { todos: newTodos };
